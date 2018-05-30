@@ -1,0 +1,523 @@
+/* Global style */
+*{
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	outline: none;
+}
+
+html{
+	/*width: 100%;*/
+	height: 100%;
+}
+
+body {
+  /*width: 100%;*/
+	height: 100%;
+  font-size: 16px;
+  font-family: 'Open Sans', sans-serif;
+  margin : 0px;
+  font-weight: lighter;
+  color: rgba(0,0,0,0.9);
+  background-color: rgba(0,0,0,0.05);
+}
+
+img, video{
+	max-width: 100%;
+}
+
+.container{
+	width: 80%;
+	min-height:100%;
+	margin: 0 auto;
+	margin-top: 250px;
+	margin-bottom: 50px;
+}
+
+header{
+  padding-top: 10px;
+  padding-bottom: 20px;
+  background-color: rgba(0,0,0,0.8);
+	z-index: 8;
+}
+
+.fixed{
+	position: fixed;
+	top: 0px;
+	width: 100%;
+}
+
+header nav{
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-end;
+	position: relative;
+}
+
+header nav a{
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  padding: 15px;
+  border-radius: 15px;
+  transition: all ease-out 500ms;
+}
+
+header nav a:hover{
+  transition: all ease-in 500ms;
+  transform: scale(1.3);
+  color: orange;
+}
+
+header nav a+a:hover{
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.logo img{
+  width : 130px;
+  border-radius: 50%;
+}
+
+.logo{
+  padding-left: 0px;
+}
+
+#select-lang{
+	position: absolute;
+	right: 20px;
+	top: 20px;
+}
+
+h1{
+  color: black;
+}
+
+/* Map Style */
+#map{
+  width: 680px;
+  height: 600px;
+  margin: 0px;
+	z-index: 1;
+}
+
+.map,
+.manage-hunt{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin: 0px;
+}
+
+.map-home,
+.map-manage-hunt{
+  width: 65%;
+}
+
+.make-circuit{
+  width: 35%;
+  padding: 0px 5px;
+	margin-bottom: 50px;
+}
+
+.game-list{
+  width: 80%;
+}
+
+.hide{
+	display: none;
+}
+
+#lang{
+	display: none;
+}
+
+/* form style*/
+fieldset{
+  border-radius: 20px;
+  border-color : rgba(0,0,0,0.3);
+}
+
+#list-challenge > div:nth-child(2),
+#list-challenge > div:nth-child(3){
+	border: 1px solid rgba(0,0,0,0.3);
+	border-radius: 20px;
+	padding: 10px;
+}
+
+#list-challenge > div:nth-child(2) > ul > li:nth-child(even),
+#list-challenge > div:nth-child(3) > ul > li:nth-child(even){
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+legend{
+  font-weight: bold;
+  font-size: 18px;
+}
+
+input{
+  width: 100%;
+}
+
+ul{
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+}
+
+li{
+  margin : 10px 0px;
+}
+
+.form-contact fieldset,
+.form-signup fieldset{
+	width: 700Px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 30px;
+}
+
+.form-contact li,
+.form-signup li{
+	padding-left: 50px;
+}
+
+.form-contact span,
+.form-signup span{
+	color: red;
+}
+
+.form-contact input[type="text"],
+.form-signup input[type="text"]{
+	width: 382px;
+	padding: 5px;
+}
+
+.form-contact label,
+.form-signup label{
+	display: block;
+	width: 130px;
+	float: left;
+}
+
+.form-contact div,
+.form-signup div{
+	display: flex;
+}
+
+.form-contact input,
+.form-signup input{
+	width: 30px;
+	border-radius: 10px;
+	border: 1px solid rgba(0,0,0,0.3);
+}
+
+.form-contact .robot,
+.form-signup .robot{
+	display: block;
+	width: 180px;
+	float: left;
+}
+
+.form-contact textarea,
+.form-signup textarea{
+	padding: 5px;
+	border-radius: 10px;
+	border: 1px solid rgba(0,0,0,0.3);
+}
+
+.form-contact .button-action,
+.form-signup .button-action{
+	display: flex;
+	justify-content: center;
+	margin-top: 30px;
+}
+
+.form-manage-question .button-send{
+	margin: 20px 10px;
+}
+
+.hunt-management{
+	/*display: flex;
+	flex-wrap: wrap;*/
+}
+
+#challenge-management{
+	width: 50%;
+}
+
+#list-challenge{
+	width: 45%;
+}
+
+#qcm,
+#qru{
+	width: 45px;
+}
+
+.button-send,
+.button-cancel,
+#select-qcm,
+#select-qru{
+	font-size: 16px;
+	border-radius: 5px;
+	text-decoration: none;
+	margin-left: 20px;
+	color: black;
+	border: 1px solid rgba(0,0,0,0.5);
+	cursor: pointer;
+}
+
+#select-qcm,
+#select-qru{
+	text-decoration: none;
+	border: 1px solid black;
+	width: 345px;
+}
+
+.button-disconnect{
+	font-size: 10px;
+	border-radius: 5px;
+	text-decoration: none;
+	margin-right: 0px;
+	color: black;
+	background-color: orange;
+	padding: 3px;
+	border: 1px solid rgba(0,0,0,0.5);
+	cursor: pointer;
+}
+
+.button-send{
+	background-color: orange;
+	padding: 10px;
+}
+
+.button-cancel,
+#select-qcm,
+#select-qru{
+	background-color: rgba(0,0,0,0.1);
+	padding: 8px;
+}
+
+.login-page,
+.form-login{
+	color: white;
+	width: 300px;
+	margin: 0px;
+	position: fixed;
+	top: 200px;
+	right: 20px;
+	z-index: 8;
+}
+
+.form-login fieldset{
+	border: 1px solid white;
+}
+
+.form-login fieldset{
+	background-color:rgba(0,0,0,0.6);
+}
+
+.form-map fieldset,
+.form-manage-map fieldset{
+	background-color:rgba(0,0,0,0.3);
+	margin-bottom: 10px;
+}
+
+.form-map fieldset legend,
+.form-manage-map fieldset legend{
+	background-color: orange;
+	border-radius: 5px;
+}
+
+.form-login .button-cancel{
+	background-color: rgba(255,255,255,1);
+	padding: 10px 20px;
+}
+
+.signup-page{
+	margin-top: 20px;
+}
+
+.signup-page,
+.form-signup{
+	color: white;
+	width: 800px;
+	margin: 0px;
+	padding: 20px;
+	padding-top: 5px;
+	position: fixed;
+	top: 80px;
+	left: 50%;
+	margin-left: -400px;
+	z-index: 8;
+}
+
+.form-signup{
+	border: 1px solid white;
+	background-color: rgba(0,0,0,0.6);
+	border-radius: 10px;
+}
+
+.form-signup h3{
+	margin: 0px;
+	text-align: center;
+	font-weight: bold;
+	color: orange;
+}
+
+.form-signup fieldset{
+	background-color: rgba(0,0,0,0.6);
+	margin: 20px;
+	margin-top: 5px;
+}
+
+.form-signup .button-cancel{
+	background-color: rgba(255,255,255,1);
+	padding: 10px 20px;
+}
+
+#signup{
+	margin-left: 95px;
+}
+
+#signup a{
+	color: white;
+}
+
+.hunt-list,
+.hunt-management{
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.hunt-list table,
+.hunt-management table{
+	padding: 10px;
+  font-size: 1em;
+	text-align: center;
+	background-color: rgba(0,0,0,0.1);
+	border-radius: 10px;
+  border: 1px solid black;
+}
+
+.hunt-list table thead,
+.hunt-management table thead{
+  border-collapse: collapse;
+	background-color: rgba(0,0,0,0.3);
+}
+
+.hunt-list table tbody,
+.hunt-management table tbody{
+  border-collapse: collapse;
+	background-color: white;
+}
+
+.hunt-list th, tr,
+.hunt-management th, tr{
+  border: 1px solid black;
+}
+
+.hunt-list td,
+.hunt-management td{
+  border: 1px solid black;
+}
+
+.hunt-management tr td:last-of-type{
+  max-width: 350px;
+}
+
+.hunt-list th, td,
+.hunt-management th, td{
+  padding: 3px;
+}
+
+.hunt-list tbody tr:hover{
+  transition: all ease-in 500ms;
+  transform: scale(1.1);
+  background-color: orange;
+}
+
+.admin-logged{
+	width: 245px;
+	height: 50px;
+	position: absolute;
+	right: 0px;
+	top: 50px;
+	z-index: 9;
+}
+
+.admin-logged h4{
+	margin: 0px;
+	color: white
+}
+
+.admin-logged span{
+	font-weight: bold;
+	color: green;
+}
+
+.admin-logged li{
+	text-align: right;
+	padding-right: 20px;
+}
+
+.admin-logged a{
+	text-decoration: none;
+}
+
+.manage-hunt > article.hunt-management div{
+	margin: 30px 10px;
+}
+
+h3,#spot-table{
+	margin: 30px 10px;
+}
+
+.blur{
+	filter: blur(3px);
+	/*background-color: rgba(0,0,0,0.85);*/
+}
+
+footer{
+  background-color: black;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+footer nav{
+  background-color: black;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-end;
+}
+
+footer nav a{
+	font-size: 10px;
+	text-decoration: underline;
+	color: white;
+  font-weight: bold;
+  padding: 15px;
+  transition: all ease-out 500ms;
+}
+
+footer nav a:hover{
+	color: orange;
+}
+
+footer nav a .fa{
+  font-size: 20px;
+	padding: 10px;
+}
+
+footer nav a .fa:hover{
+  transition: all ease-in 500ms;
+	transform: scale(1.6);
+}

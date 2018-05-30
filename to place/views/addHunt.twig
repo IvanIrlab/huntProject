@@ -1,0 +1,69 @@
+{% extends "template.twig" %}
+
+{% block title %}
+Add Hunt Page
+{% endblock %}
+
+{% block main %}
+<section class="map">
+  <h1><i class="fa fa-map" aria-hidden="true"></i> Créez votre circuit et débutez la chasse</h1>
+  <article class="map-home">
+    <div id="map"></div>
+    <input type="text" name="map-address" id="map-address"></li>
+    <p>Position actuelle -> <span id="pos"></span></p>
+    <h3>INFOS MAP</h3>
+    <p>Longitude : <span id="coord-long" ></span>  Latitude : <span id="coord-lat"></span></p>
+  </article>
+  <aside class="make-circuit">
+    <form class="form-map" action="#" method="POST">
+      <fieldset>
+        <legend> Nom et point de départ de la chasse </legend>
+        <ul>
+        </li><label for="hunt-title"> Nom votre Chasse aux trésors :</label>
+        <input type="text" name="hunt-title"></li>
+          <li><label for="start-city">Ville de départ : </label>
+          <select id="start-city" name="start-city">
+            <option value="0">        </option>
+            <option value="1">Saint-Denis</option>
+            <option value="2">La Possession</option>
+            <option value="3">Le Port</option>
+            <option value="4">Saint-Paul</option>
+            <option value="5">Saint-Leu</option>
+            <option value="6">Saint-Louis</option>
+            <option value="7">Saint-Pierre</option>
+            <option value="8">Saint-Joseph</option>
+            <option value="9">Saint-Philippe</option>
+            <option value="10">Sainte-Rose</option>
+            <option value="11">Saint-Benoît</option>
+            <option value="12">Saint-André</option>
+            <option value="13">Sainte-Suzanne</option>
+            <option value="14">Cilaos</option>
+            <option value="15">Plaine des Palmistes</option>
+            <option value="16">Le Tampon</option>
+          </select>
+        </ul>
+      </fieldset>
+      <fieldset>
+        <legend>Les étapes </legend>
+        <ul>
+          <li><label for="place-name">Nom de l'étape : </label><input type="text" name="place-name"></li>
+          <li><label for="place-address">Adresse : </label><input type="text" name="place-address" id="place-address"></li>
+          <li><input type="button" name="local-add" value="local-add"></li>
+          <li>ou coordonnées GPS</li>
+          <li><label for="place-coord-lat">Latitude : </label><input type="text" name="place-coord-lat" id="place-coord-lat"></li>
+          <li><label for="place-coord-long">Longitude : </label><input type="text" name="place-coord-long" id="place-coord-long"></li>
+        </ul>
+        <input type="button" name="Ajouter" value="Ajouter">
+      </fieldset>
+      <input type="button" name="Valider" value="Valider">
+    </form>
+  </aside>
+  <article class="game-list">
+  </article>
+</section>
+{% endblock %}
+
+{% block script_js %}
+<script type='text/javascript' src="js/map.js"></script>
+<script type='text/javascript' src="js/main.js"></script>
+{% endblock %}

@@ -1,0 +1,16 @@
+{
+    "require":
+    {
+        "silex/silex": "~2.0",
+        "twig/twig": "^1.35",
+        "symfony/twig-bridge": "^2.7",
+        "symfony/asset": "^3.4"
+    },
+    "autoload":
+    {
+        "psr-4":
+        {
+            "Src\\": "src"
+        }
+    }
+}

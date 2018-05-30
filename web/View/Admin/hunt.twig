@@ -1,0 +1,156 @@
+{% extends "template.twig" %}
+
+{% block title %}
+Manage Hunt Page
+{% endblock %}
+
+{% block main %}
+<section  id="page" class="manage-hunt">
+  <h1><i class="fa fa-map" aria-hidden="true"></i>Gestion chasse N° {{hunt.id}}  : {{ hunt.name|e}}</h1>
+  <article class="map-manage-hunt">
+    <div id="map"></div>
+    <input type="text" name="map-address" id="map-address">
+    <p>Position actuelle : <span id="pos"></span></p>
+    <!--<h3>INFOS MAP</h3>
+    <p>Longitude : <span id="coord-long" ></span>  Latitude : <span id="coord-lat"></span></p>-->
+  </article>
+  <aside class="make-circuit">
+    <form class="form-manage-map" action="{{ basePath }}/index.php/admin/addSpot/{{id}}" method="POST">
+      <fieldset>
+        <legend>Ajouter une étape</legend>
+        <ul>
+          <li><label for="place-name">Nom de l'étape : </label><input type="text" name="place-name"></li>
+          <li><label for="place-address">Adresse : </label><input type="text" name="place-address" id="place-address"></li>
+          <li>Coordonnées GPS</li>
+          <li><label for="place-coord-lat">Latitude : </label><input type="text" name="place-coord-lat" id="place-coord-lat"></li>
+          <li><label for="place-coord-long">Longitude : </label><input type="text" name="place-coord-long" id="place-coord-long"></li>
+          <li><label for="place-coord-rad">radius (m) : </label><input type="text" name="place-coord-rad" id="place-coord-rad"></li>
+          <li><label for="picture-name">Image (url) :
+          </label><input type="text" name="picture-name" id="picture-name"></li>
+          <li><label class="textarea" for="desc">Description :</label>
+          <textarea id="desc" name="desc" rows="5" cols="59"></textarea></li>
+        </ul>
+      </fieldset>
+      <button class="button-send" type="submit">Ajouter l'étape</button>
+      <p>Lors de l'ajout d'une étape, vous ne l'a verrez peut-être pas immédiatement dans la liste ci-dessous. Repartir sur l'acceuil puis revenir sur le challenge pour être sur de visualiser toutes les étapes.</p>
+    </form>
+  </aside>
+  <article class="hunt-management">
+    <h3> Chasse N° {{id}}</h3>
+    <div id="delete-hunt">
+      <a class="button-cancel" href="{{ basePath }}/index.php/admin/deleteHunt/{{hunt.id}}">Effacer</a>
+    </div>
+    <div>
+        <table id="spot-table">
+          <thead>
+            <tr>
+              <th>Nom des étapes</th>
+              <th>Id</th>
+              <th>latitude</th>
+              <th>Longitude</th>
+              <th>Altitude</th>
+              <th>Radius</th>
+              <th>Picture</th>
+              <th>description</th>
+            </tr>
+          </thead>
+          <tfoot>
+          </tfoot>
+          <tbody>
+          {% for spot in spots %}
+                <tr id = "{{ spot.id|e }}">
+                  <td>{{ spot.name|e }}</td>
+                  <td>{{ spot.id|e }}</td>
+                  <td>{{ spot.latitude|e }}</td>
+                  <td>{{ spot.longitude|e }}</td>
+                  <td>{{ spot.altitude|e }}</td>
+                  <td>{{ spot.radius|e }}</td>
+                  <td>{{ spot.picture|e }}</td>
+                  <td>{{ spot.description|e [:35]|nl2br }}...</td>
+                </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+    </div>
+    <div id = "challenge-management" class = "">
+      <h3> Challenges chasses N° {{id}}</h3>
+      <form class="form-manage-question" action="{{ basePath }}/index.php/admin/addChallenge/{{id}}" method="POST">
+        <fieldset>
+          <legend>Ajouter un challenge</legend>
+          <ul>
+            <li class="hide"><input type="number" name="hunt-id" id="hunt-id" value="{{id}}"</li>
+            <li><label for="select-place">Etape : </label>
+            <select id="select-place" name="select-place">
+              {% for spot in spots %}
+              <option  id = "{{ spot.id|e }}" value="{{ spot.id|e }}">Place {{ spot.id|e }} : {{ spot.name|e }}</option>
+              {% endfor %}
+            </select></li>
+            <div id = "select-qcm">Challenge type QCM</div>
+            <div id = "type-qcm" class = "type-qcm hide">
+              <li><label for="qcm">Type de question : </label><input type="text" name="type-qcm" id="qcm" value="" placeholder="qcm"></li>
+              <li><label class="question" for="question">Question :</label>
+              <textarea id="qcm-question" name="qcm-question" rows="3" cols="59"></textarea></li>
+              <li><label for="choix-1">Choix N°1 : </label><input type="text" name="qcm-choix-1" id="qcm-choix-1"></li>
+              <li><label for="choix-2">Choix N°2 : </label><input type="text" name="qcm-choix-2" id="qcm-choix-2"></li>
+              <li><label for="choix-3">Choix N°3 : </label><input type="text" name="qcm-choix-3" id="qcm-choix-3"></li>
+              <li><label for="choix-4">Choix N°4 : </label><input type="text" name="qcm-choix-4" id="qcm-choix-4"></li>
+              <li><label for="response">Réponse : </label><input type="text" name="qcm-response" id="qcm-response"></li>
+            </div>
+            <div id = "select-qru">Challenge type question ouverte ou fermée</div>
+            <div id = "type-qru" class = "type-qru hide">
+              <li><label for="qru">Type de question : </label><input type="text" name="type-qru" id="qru" value="" placeholder="qru"></li>
+              <li><label class="question" for="question">Question :</label>
+              <textarea id="qru-question" name="qru-question" rows="3" cols="59"></textarea></li>
+              <li><label for="response">Réponse : </label><input type="text" name="qru-response" id="qru-response"></li>
+            </div>
+          </ul>
+        </fieldset>
+        <button class="button-send" type="submit">Ajouter le challenge</button>
+      </form>
+    </div>
+    <div id = "list-challenge" class = "">
+      <h3>Liste Challenges chasses N° {{id}}</h3>
+      <div>
+        <h4>Challenges QCM</h4>
+        <ul>
+        {% for qcm in challengesQcm %}
+          <li id="{{ qcm.id|e }}">
+            <ul>
+              <li>Place {{ qcm.spot_id|e }}</li>
+              <li>Question: {{ qcm.question|e }}</li>
+              <li>Choix 1: {{ qcm.response1|e }}</li>
+              <li>Choix 2: {{ qcm.response2|e }}</li>
+              <li>Choix 3: {{ qcm.response3|e }}</li>
+              <li>Choix 4: {{ qcm.response4|e }}</li>
+              <li>Réponse: {{ qcm.response|e }}</li>
+            </ul>
+          </li>
+          <li><a class="button-cancel" href="{{ basePath }}/index.php/admin/deleteChallengeQcm/{{qcm.id}}">Effacer</a></li>
+        {% endfor %}
+        </ul>
+      </div>
+      <div>
+        <h4>Challenges question ouverte ou fermée</h4>
+        <ul>
+        {% for qru in challengesQru %}
+          <li id="{{ qru.id|e }}">
+            <ul>
+              <li>Place {{ qru.spot_id|e }}</li>
+              <li>Question: {{ qru.question|e }}</li>
+              <li>Réponse: {{ qru.response|e }}</li>
+            </ul>
+          </li>
+          <li><a class="button-cancel" href="{{ basePath }}/index.php/admin/deleteChallengeQru/{{qru.id}}">Effacer</a></li>
+        {% endfor %}
+        </ul>
+      </div>
+    <div>
+  </article>
+</section>
+{% endblock %}
+
+{% block script_js %}
+<script type='text/javascript' src="{{ basePath }}/js/trad.js"></script>
+<script type='text/javascript' src="{{ basePath }}/js/map.js"></script>
+<script type='text/javascript' src="{{ basePath }}/js/main.js"></script>
+{% endblock %}

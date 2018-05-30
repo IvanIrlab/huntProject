@@ -1,0 +1,22 @@
+{% extends "template.twig" %}
+
+{% block title %}
+Admin Home Page
+{% endblock %}
+
+{% block main %}
+<section id="page" class="admin-home-page">
+  <h1>ADMINISTRATEUR</h1>
+  <ul>
+  <li>
+    <a href="{{ basePath }}/index.php/admin/createHunt">Créer une nouvelle chasse aux trésors</a>
+  </li>
+  <li>
+    <a href="#">Lancer et suivre une chasse aux trésors</a>
+  </li>
+  </ul>
+</section>
+{% endblock %}
+
+{% block script_js %}
+{% endblock %}

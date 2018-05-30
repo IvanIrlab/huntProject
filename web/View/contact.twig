@@ -1,0 +1,76 @@
+{% extends "template.twig" %}
+
+{% block title %}
+Contact Page
+{% endblock %}
+
+{% block main %}
+<section  id="page" class="contact">
+  <h1>Organisons votre chasse aux énigmes</h1>
+  <article>
+    <form class="form-contact" action="{{ basePath }}/index.php/contact/send" method="post">
+      <fieldset>
+        <legend><i class="fa fa-paper-plane" aria-hidden="true"></i> Contactez-nous</legend>
+        <ul>
+          <li>
+            <div>
+              <input type="radio" id="particular-yes" name="particular" value="yes" checked="checked">
+              <label for="particular-yes"> Particulier</label>
+              <input type="radio" id="particular-no" name="particular" value="no">
+              <label for="particular-no"> Société</label>
+            </div>
+          </li>
+          <li id="society" class="hide">
+            <label for="society">Société :</label>
+            <input type="text" id="society" name="society">
+          </li>
+          <li>
+            <label for="last-name">Nom<span>*</span> :</label>
+            <input type="text" id="last-name" name="last-name">
+          </li>
+          <li>
+            <label for="fisrt-name">Prénom :</label>
+            <input type="text" id="first-name" name="first-name">
+          </li>
+          <li>
+            <label for="mail">E-mail<span>*</span> :</label>
+            <input type="text" id="mail" name="mail">
+          </li>
+          <li>
+            <label for="phone">Phone<span>*</span> :</label>
+            <input type="text" id="phone" name="phone">
+          </li>
+          <li>
+            <label for="object">Objet<span>*</span> :</label>
+            <input type="text" id="object" name="object">
+          </li>
+          <li>
+            <label class="textarea" for="content">Message<span>*</span> :</label>
+            <textarea id="content" name="content" rows="20" cols="60"></textarea>
+          </li>
+          <!--<li>
+              <label for="author">Auteur :</label>
+              <select id="author" name="author">
+              	<option></option>
+              <?php foreach ($query_author as $authors): ?>
+              	<option value="<?=$authors['Id']?>"><?=$authors['Id']?> : <?=$authors['FirstName']?>  <?=$authors['LastName']?></option>
+              <?php endforeach ?>
+              </select>
+          </li>-->
+          <li class='button-action'>
+              <button class="button-send" type="submit">Envoyer</button>
+              <a class="button-cancel" href="{{ basePath }}/index.php/contact">Annuler</a>
+          </li>
+          <li>
+            <label for="robot" class="robot">Je ne suis pas un robot </label>
+            <input type="checkbox" name="robot" value="not-robot">
+          </li>
+        </ul>
+      </fieldset>
+    </form>
+  </article>
+</section>
+{% endblock %}
+
+{% block script_js %}
+{% endblock %}

@@ -1,0 +1,132 @@
+{% extends "template.twig" %}
+
+{% block title %}
+Create Hunt Page
+{% endblock %}
+
+{% block main %}
+<section  id="page" class="map">
+  <h1><i class="fa fa-map" aria-hidden="true"></i> Créez votre circuit et débutez la chasse</h1>
+  <article class="map-home">
+    <div id="map"></div>
+    <input type="text" name="map-address" id="map-address">
+    <p>Position actuelle : <span id="pos"></span></p>
+    <!--<h3>INFOS MAP</h3>
+    <p>Longitude : <span id="coord-long" ></span>  Latitude : <span id="coord-lat"></span></p>-->
+  </article>
+  <aside class="make-circuit">
+    <form class="form-map" action="{{ basePath }}/index.php/admin/createHunt" method="POST">
+      <fieldset>
+        <legend> Nom et point de départ de la chasse </legend>
+        <ul>
+        </li><label for="hunt-title"> Nom votre Chasse aux trésors :</label>
+        <input type="text" name="hunt-title"></li>
+          <li><label for="start-city">Ville de départ : </label>
+          <select id="start-city" name="start-city">
+            <option value="0">        </option>
+            <option value="1">Saint-Denis</option>
+            <option value="2">La Possession</option>
+            <option value="3">Le Port</option>
+            <option value="4">Saint-Paul</option>
+            <option value="5">Saint-Leu</option>
+            <option value="6">Saint-Louis</option>
+            <option value="7">Saint-Pierre</option>
+            <option value="8">Saint-Joseph</option>
+            <option value="9">Saint-Philippe</option>
+            <option value="10">Sainte-Rose</option>
+            <option value="11">Saint-Benoît</option>
+            <option value="12">Saint-André</option>
+            <option value="13">Sainte-Suzanne</option>
+            <option value="14">Cilaos</option>
+            <option value="15">Plaine des Palmistes</option>
+            <option value="16">Le Tampon</option>
+          </select>
+        </ul>
+      </fieldset>
+      <fieldset>
+        <legend>Première étape </legend>
+        <ul>
+          <li><label for="place-name">Nom de l'étape : </label><input type="text" name="place-name"></li>
+          <li><label for="place-address">Adresse : </label><input type="text" name="place-address" id="place-address"></li>
+          <li>Coordonnées GPS</li>
+          <li><label for="place-coord-lat">Latitude : </label><input type="text" name="place-coord-lat" id="place-coord-lat"></li>
+          <li><label for="place-coord-long">Longitude : </label><input type="text" name="place-coord-long" id="place-coord-long"></li>
+          <li><label for="place-coord-rad">radius (m) : </label><input type="text" name="place-coord-rad" id="place-coord-rad"></li>
+          <li><label for="picture-name">Image (url) :
+          </label><input type="text" name="picture-name" id="picture-name"></li>
+          <li><label class="textarea" for="desc">Description :</label>
+          <textarea id="desc" name="desc" rows="5" cols="59"></textarea></li>
+        </ul>
+      </fieldset>
+      <button class="button-send" type="submit">Valider</button>
+    </form>
+  </aside>
+  <article class="hunt-management hide">
+    <h3> Chasses N° <span id="hunt-id"></span></h3>
+        <table id="spot-table">
+          <thead>
+            <tr>
+              <th>Nom de l'étape</th>
+              <th>Id</th>
+              <th>latitude</th>
+              <th>Longitude</th>
+              <th>Altitude</th>
+              <th>Radius</th>
+              <th>Picture</th>
+              <th>description</th>
+            </tr>
+          </thead>
+          <tfoot>
+          </tfoot>
+          <tbody id='spots'>
+
+          </tbody>
+        </table>
+    <form id="form-spot" class="form-spot" action="{{ basePath }}/index.php/admin/createSpot" method="POST">
+      <button class="button-send" type="submit">Gérer</button>
+      <a id="delete-hunt" class="button-cancel" href="{{ basePath }}/index.php/admin/deleteHunt">Effacer</a>
+    </form>
+  </article>
+  <article class="hunt-list">
+    <h3> Liste des Chasses</h3>
+    <table id="hunt-table">
+      <thead>
+        <tr>
+          <th>Chasse N°</th>
+          <th>Nom</th>
+          <th>Date de création</th>
+          <th>Admin</th>
+          <th>Latitude Départ</th>
+          <th>Longitude départ</th>
+          <th>Adresse départ</th>
+          <th>User code</th>
+          <th>Statut</th>
+        </tr>
+      </thead>
+      <tfoot>
+      </tfoot>
+      <tbody>
+  {% for hunt in hunts %}
+        <tr id = "{{ hunt.id|e }}">
+          <td>{{ hunt.id|e }}</td>
+          <td>{{ hunt.name|e }}</td>
+          <td>{{ hunt.creation_timestamp|e }}</td>
+          <td>{{ hunt.admin_id|e }}</td>
+          <td>{{ hunt.start_lat|e }}</td>
+          <td>{{ hunt.start_long|e }}</td>
+          <td>{{ hunt.address|e }}</td>
+          <td>{{ hunt.code|e }}</td>
+          <td>{{ hunt.status|e }}</td>
+        </tr>
+  {% endfor %}
+      </tbody>
+    </table>
+  </article>
+</section>
+{% endblock %}
+
+{% block script_js %}
+<script type='text/javascript' src="{{ basePath }}/js/trad.js"></script>
+<script type='text/javascript' src="{{ basePath }}/js/map.js"></script>
+<script type='text/javascript' src="{{ basePath }}/js/main.js"></script>
+{% endblock %}

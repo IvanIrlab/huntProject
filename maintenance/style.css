@@ -1,0 +1,94 @@
+/* Global style */
+*{
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	outline: none;
+}
+
+html{
+  /*width: 100%;*/
+	height: 100%;
+}
+
+body{
+  /*width: 100%;*/
+	height: 100%;
+  font-size: 16px;
+  font-family: 'Open Sans', sans-serif;
+  margin : 0px;
+  font-weight: lighter;
+  color: rgba(0,0,0,0.9);
+  background-color: black;
+}
+
+img, video{
+	max-width: 100%;
+}
+
+h1{
+  font-family: 'shojumaru', cursive;
+  text-align: center;
+  font-weight: bold;
+  font-size: 70px;
+  color: white;
+}
+
+.slogan{
+  margin-top: 50px;
+  text-align: center;
+  font-size: 30px;
+  color: white;
+  font-family: cursive;
+}
+
+.irlab{
+  text-align: right;
+  font-size: 15px;
+  color: white;
+  font-family: 'orbitron', cursive;
+}
+
+.irlab a{
+  color: #ef4f00;
+  text-decoration: none;
+}
+
+div{
+  text-align: center;
+  vertical-align: middle;
+}
+
+.logo-maintenance{
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+}
+
+footer{
+  position: absolute;
+  bottom: 0;
+  right: 10px;
+}
+
+/*En dessous de 1024px, tablette*/
+@media screen and (max-width:1024px)
+{
+  footer{
+    position: inherit;
+  }
+}
+
+@media screen and (max-width:420px)
+{
+
+  h1{
+    font-size: 40px;
+  }
+
+  .logo-maintenance{
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+  }
+}

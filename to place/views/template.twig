@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %} {% endblock %}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link href="https://fonts.googleapis.com/css?family=Candal|Open+Sans" rel="stylesheet">
+  	<link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- JQuery Library -->
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <!-- Google Maps V3 API -->
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAcLwOI8wRBeduGlGzaZoTL5afHgo4_bLw&libraries=places"></script>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="index.php" class="logo"><img src="img/logo.jpeg" alt="logo.png"/>GOLD HUNTER</a>
+      <a href="#">ABOUT</a>
+      <a href="#">CONTACT</a>
+      <a href="#">LOGIN</a>
+    </nav>
+  </header>
+  <main class="container">
+  {%block main%} {%endblock%}
+  </main>
+  {% block script_js %} {% endblock %}
+</body>
+</html>
